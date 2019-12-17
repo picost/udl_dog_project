@@ -1,0 +1,1 @@
+from .imagenet1000_clsidx_to_labels import vgg_class_labels
