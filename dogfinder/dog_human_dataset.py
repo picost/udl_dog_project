@@ -7,6 +7,8 @@ Created on Thu Dec 19 18:53:54 2019
 """
 
 from PIL import Image
+from PIL import ImageFile
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 from torch.utils.data import Dataset
 from torchvision import transforms
 
