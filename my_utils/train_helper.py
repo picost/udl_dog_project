@@ -88,6 +88,7 @@ def train_model(model, loaders, criterion, optimizer, n_epochs=10, device=None,
             n_train += data.shape[0]
         train_loss /= n_train
         history.loc[epoch][TRAINL] = train_loss
+        print('Epoch: {} \tTraining Loss: {:.6f}'.format(epoch, train_loss))
         ######################    
         # validate the model #
         ######################
@@ -106,15 +107,16 @@ def train_model(model, loaders, criterion, optimizer, n_epochs=10, device=None,
         valid_loss /= n_valid
         history.loc[epoch][VALIDL] = valid_loss
         history.loc[epoch][ACCU] = correct / n_valid
-        print('Epoch: {} \tTraining Loss: {:.6f} \tValidation Loss: {:.6f}'
-              '\tAccuracy: {:.6f}'.format(
+        print('Epoch: {} \tValidation Loss: {:.6f}\tAccuracy: {:.6f}'.format(
             epoch, 
-            train_loss,
             valid_loss,
             history.loc[epoch][ACCU]
             ))
         if valid_loss < valid_loss_min:
             print('Saving model...')
+            if not os.path.exists(train_dir):
+                print("Create directory: [{}]".format(train_dir))
+                os.mkdir(train_dir)
             save_path = os.path.join(train_dir, save_name)
             torch.save(model.state_dict(), save_path)
             history.to_csv(history_path, index_label=EPOCH)
