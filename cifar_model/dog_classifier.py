@@ -14,11 +14,11 @@ class Net(nn.Module):
     def __init__(self, n_class, imsize):
         super(Net, self).__init__()
         assert (imsize % 8 == 0), "Imsize must be a divisible by 8"
-        # convolutional layer (sees 32x32x3 image tensor)
+        # convolutional layer (sees 80x80x3 image tensor)
         self.conv1 = nn.Conv2d(3, 16, 3, padding=1)
-        # convolutional layer (sees 16x16x16 tensor)
+        # convolutional layer (sees 40x40x16 tensor)
         self.conv2 = nn.Conv2d(16, 32, 3, padding=1)
-        # convolutional layer (sees 8x8x32 tensor)
+        # convolutional layer (sees 20x20x32 tensor)
         self.conv3 = nn.Conv2d(32, 64, 3, padding=1)
         # max pooling layer
         self.pool = nn.MaxPool2d(2, 2)
