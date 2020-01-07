@@ -57,12 +57,13 @@ def train_model(model, loaders, criterion, optimizer, n_epochs=10, device=None,
         new_hist = pd.DataFrame(np.zeros((n_epochs, len(cols))), columns=cols,
                            index=epochs)
         history = existing_hist.append(new_hist, verify_integrity=True)
+        valid_loss_min = history[VALIDL].loc[:e_start].min()
     except FileNotFoundError:    
         e_start = 1
         epochs = np.arange(e_start, e_start + n_epochs, dtype=np.int64)
         history = pd.DataFrame(np.zeros((n_epochs, len(cols))), columns=cols,
                                index=epochs)
-    valid_loss_min = np.Inf 
+        valid_loss_min = np.Inf 
     for epoch in epochs:
         print('Starting epoch [{}]'.format(epoch))
         # initialize variables to monitor training and validation loss
