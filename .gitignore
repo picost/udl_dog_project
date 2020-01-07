@@ -3,3 +3,6 @@
 haarcascades/*
 images
 **/*.pt
+**/*.jpg
+**/*.png
+**/*.zip
