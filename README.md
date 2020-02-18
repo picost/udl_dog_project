@@ -4,3 +4,4 @@ This is not properly speaking a software development project with all the usual 
 
 The submitted html file is contained in the submission folder.	
 
+*Remark:* Commit message practice is to reference the related issue. Work description is located in the issue ticket comments.
